@@ -7,7 +7,6 @@ import html from 'remark-html'
 const postsDirectory = path.join(process.cwd(), 'posts')
 
 export function getSortedPostsData() {
-    console.log(postsDirectory)
 
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory)
@@ -25,7 +24,7 @@ export function getSortedPostsData() {
     // Combine the data with the id
     return {
       id,
-      ...matterResult.data
+      ...(matterResult.data as { date: string; title: string })
     }
   })
   // Sort posts by date
@@ -43,19 +42,6 @@ export function getSortedPostsData() {
 export function getAllPostIds() {
     const fileNames = fs.readdirSync(postsDirectory)
   
-    // Returns an array that looks like this:
-    // [
-    //   {
-    //     params: {
-    //       id: 'ssg-ssr'
-    //     }
-    //   },
-    //   {
-    //     params: {
-    //       id: 'pre-rendering'
-    //     }
-    //   }
-    // ]
     return fileNames.map(fileName => {
       return {
         params: {
@@ -85,6 +71,6 @@ export function getAllPostIds() {
     return {
       id,
       contentHtml,
-      ...matterResult.data
+      ...(matterResult.data as { date: string; title: string })
     }
   }
