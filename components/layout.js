@@ -8,7 +8,7 @@ export const siteTitle = 'Next.js Sample Website'
 
 export default function Layout({ children, home }) {
   return (
-    <div>
+    <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -30,7 +30,7 @@ export default function Layout({ children, home }) {
             <Image
               priority
               src="/images/profile.jpg"
-            
+              className="inline-block h-6 w-6 rounded-full"
               height={144}
               width={144}
               alt={name}
@@ -44,7 +44,7 @@ export default function Layout({ children, home }) {
                 <Image
                   priority
                   src="/images/profile.jpg"
-                
+                  className="inline-block h-6 w-6 rounded-full"
                   height={108}
                   width={108}
                   alt={name}
